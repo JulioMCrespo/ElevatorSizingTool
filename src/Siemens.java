@@ -24,9 +24,51 @@ public class Siemens extends StarterSelector{
 	};
 	
 	public String ChooseStarter(double motorVolts, double fla, double hp){
-		String test[] = {Double.toString(motorVolts),Double.toString(fla),Double.toString(hp)};
-		String output = String.format("%s,%s,%s",test[0],test[1],test[2]);
-		return output;
+		//String test[] = {Double.toString(motorVolts),Double.toString(fla),Double.toString(hp)};
+		//String output = String.format("%s,%s,%s",test[0],test[1],test[2]);
+		/*
+		if(motorVolts <= 208){
+			
+		}else if(motorVolts <= 230){
+		
+		}else if(motorVolts <= 460){
+			
+		}else if(motorVolts <= 575){
+			
+		}
+		*/
+if(motorVolts <= 208){
+			
+		}else if(motorVolts <= 230){
+				  if(hp<=5 && fla<=22){
+				
+			}else if(hp<=7.5 && fla<=35){
+				
+			}else if(hp<=10 && fla<=42){
+				
+			}else if(hp<=15 && fla<=55){
+				
+			}else if(hp<=20 && fla<=68){
+				
+			}else if(hp<=25 && fla<=80){
+				
+			}else if(hp<=30 && fla<=105){
+				
+			}else if(hp<=40 && fla<=130){
+				
+			}else if(hp<=50 && fla<=156){
+				
+			}else if(hp<=75 && fla<=252){
+				
+			}
+		}else if(motorVolts <= 460){
+			
+		}else if(motorVolts <= 575){
+			
+		}
+		
+		
+		return "good";
 	}
 	
 }
