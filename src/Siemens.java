@@ -2,25 +2,25 @@
 public class Siemens extends StarterSelector{
 
 	final  String[] MODEL = {
-			"72EG34AFP",
-			"72GG34AFP",
-			"72HG34AFP",
-			"72JG34AFP",
-			"72KG34AFP",
-			"72LG34AFP",
-			"72MG34AFP",
-			"72NG34AFP",
-			"72PG34AFP",
-			"72RG34AFP",
-			"72EG35AFP",
-			"72GG35AFP",
-			"72HG35AFP",
-			"72JG35AFP",
-			"72KG35AFP",
-			"72LG35AFP",
-			"72MG35AFP",
-			"72NG35AFP",
-			"72PG35AFP"
+			"72EG34AFP",//1
+			"72GG34AFP",//2
+			"72HG34AFP",//3
+			"72JG34AFP",//4
+			"72KG34AFP",//5
+			"72LG34AFP",//6
+			"72MG34AFP",//7
+			"72NG34AFP",//8
+			"72PG34AFP",//9
+			"72RG34AFP",//10
+			"72EG35AFP",//11
+			"72GG35AFP",//12
+			"72HG35AFP",//13
+			"72JG35AFP",//14
+			"72KG35AFP",//15
+			"72LG35AFP",//16
+			"72MG35AFP",//17
+			"72NG35AFP",//18
+			"72PG35AFP" //19
 	};
 	
 	public String ChooseStarter(double motorVolts, double fla, double hp){
@@ -61,11 +61,69 @@ public class Siemens extends StarterSelector{
 				output = MODEL[9];
 			}
 		}else if(motorVolts <= 230){
-			
+			if(hp<=7.5 && fla<=22){
+				output = MODEL[0];
+			}else if(hp<=10 && fla<=35){
+				output = MODEL[1];
+			}else if(hp<=15 && fla<=42){
+				output = MODEL[2];
+			}else if(hp<=20 && fla<=55){
+				output = MODEL[3];
+			}else if(hp<=25 && fla<=68){
+				output = MODEL[4];
+			}else if(hp<=30 && fla<=80){
+				output = MODEL[5];
+			}else if(hp<=40 && fla<=105){
+				output = MODEL[6];
+			}else if(hp<=50 && fla<=130){
+				output = MODEL[7];
+			}else if(hp<=60 && fla<=156){
+				output = MODEL[8];
+			}else if(hp<=100 && fla<=252){
+				output = MODEL[9];
+			}			
 		}else if(motorVolts <= 460){
-			
+			if(hp<=15 && fla<=22){
+				output = String.format("%s or %s",MODEL[0],MODEL[10]);
+			}else if(hp<=25 && fla<=35){
+				output = String.format("%s or %s",MODEL[1],MODEL[11]);
+			}else if(hp<=30 && fla<=42){
+				output = String.format("%s or %s",MODEL[2],MODEL[12]);
+			}else if(hp<=40 && fla<=55){
+				output = String.format("%s or %s",MODEL[3],MODEL[13]);
+			}else if(hp<=50 && fla<=68){
+				output = String.format("%s or %s",MODEL[4],MODEL[14]);
+			}else if(hp<=60 && fla<=80){
+				output = String.format("%s or %s",MODEL[5],MODEL[15]);
+			}else if(hp<=75 && fla<=105){
+				output = String.format("%s or %s",MODEL[6],MODEL[16]);
+			}else if(hp<=100 && fla<=130){
+				output = String.format("%s or %s",MODEL[7],MODEL[17]);
+			}else if(hp<=125 && fla<=156){
+				output = String.format("%s or %s",MODEL[8],MODEL[18]);
+			}else if(hp<=150 && fla<=252){
+				output = String.format("%s or %s","-","-");
+			}
 		}else if(motorVolts <= 575){
-			
+			if(hp<=20 && fla<=22){
+				output = MODEL[10];
+			}else if(hp<=30 && fla<=35){
+				output = MODEL[11];
+			}else if(hp<=40 && fla<=42){
+				output = MODEL[12];
+			}else if(hp<=50 && fla<=55){
+				output = MODEL[13];
+			}else if(hp<=60 && fla<=68){
+				output = MODEL[14];
+			}else if(hp<=75 && fla<=80){
+				output = MODEL[15];
+			}else if(hp<=100 && fla<=105){
+				output = MODEL[16];
+			}else if(hp<=125 && fla<=130){
+				output = MODEL[17];
+			}else if(hp<=150 && fla<=156){
+				output = MODEL[18];
+			}
 		}
 		
 		
