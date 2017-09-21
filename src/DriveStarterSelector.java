@@ -1,9 +1,72 @@
 import java.util.Scanner;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
-public class DriveStarterSelector {
 
-	public static void main(String[] args){
+public class DriveStarterSelector extends JFrame{
+	
+	private JLabel motorVoltLabel;
+	private JTextField motorVoltInput;
+	private JLabel hpLabel;
+	private JTextField hpInput;
+	private JLabel flaLabel;
+	private JTextField flaInput;
+	private JButton SDButton; //drive and starter button
+	private JLabel SDLabel; //tells you the starter or drive that you need
+	private JComboBox movers;
+	String moverBrands[] = {"Siemens","S&S","Magnetek HPV900","Serial KEB"};
+	
+	public DriveStarterSelector(){
+		setLayout(new FlowLayout());
+		motorVoltLabel = new JLabel("Enter Motor Volts:");
+		motorVoltInput = new JTextField(5);
+		hpLabel = new JLabel("Enter Horse Power");
+		hpInput = new JTextField(5);
+		flaLabel = new JLabel("Enter FLA:");
+		flaInput = new JTextField(5);
+		SDButton = new JButton("FIND");
+		SDLabel = new JLabel("Answer");
+		movers = new JComboBox(moverBrands);
 		
+		add(motorVoltLabel);
+		add(motorVoltInput);
+		add(hpLabel);
+		add(hpInput);
+		add(flaLabel);
+		add(flaInput);
+		add(movers);
+		add(SDButton);
+		add(SDLabel);
+		SDButton.addActionListener(new finder());
+	}
+	
+	private class finder implements ActionListener{
+		public void actionPerformed(ActionEvent e){
+			
+			Double info[] = new Double[3];
+			info[0] = Double.parseDouble(motorVoltInput.getText());
+			info[1] = Double.parseDouble(hpInput.getText());
+			info[2] = Double.parseDouble(flaInput.getText());
+			String x = (String) movers.getSelectedItem();
+			if(x.equals("Siemens")){
+				//if(movers.get)
+				StarterSelector siemens = new Siemens();
+				//System.out.println(siemens.ChooseStarter(info[0], info[1], info[2]));
+				SDLabel.setText(siemens.ChooseStarter(info[0], info[2], info[1]));
+			} else {
+				SDLabel.setText("nothing :(");
+			}
+		
+		}
+	}
+	
+	public static void main(String[] args){
+		DriveStarterSelector siemens = new DriveStarterSelector();
+		siemens.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		siemens.setSize(400,400);
+		siemens.setVisible(true);
+		/*
 		Scanner input = new Scanner(System.in);
 		Double info[] = new Double[3];
 		for(int i = 0; i < 3; i++){
@@ -17,8 +80,8 @@ public class DriveStarterSelector {
 			}
 			info[i] = input.nextDouble();
 		}
-		
 		StarterSelector siemens = new Siemens();
 		System.out.println(siemens.ChooseStarter(info[0], info[1], info[2]));
+		*/
 	}
 }
