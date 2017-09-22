@@ -1,5 +1,5 @@
 
-public class Siemens extends StarterSelector{
+public class Siemens {
 
 	final  String[] MODEL = {
 			"72EG34AFP",//1
@@ -127,7 +127,7 @@ public class Siemens extends StarterSelector{
 		}
 		
 		
-		return output;
+		return "Siemens: " + output;
 	}
 	
 }
