@@ -44,6 +44,21 @@ public class DriveStarterSelector extends JFrame{
 	private class finder implements ActionListener{
 		public void actionPerformed(ActionEvent e){
 			
+			//Cindy's TEST AREA //WORKING!!!
+//			System.out.println(motorVoltInput.getText());
+//			System.out.println(Double.parseDouble(motorVoltInput.getText()));
+			//StarterSelector motorParams = new StarterSelector((String) movers.getSelectedItem(), Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
+			String x = (String) movers.getSelectedItem();
+			if (x == "Siemens" || x == "S&S") {
+				StarterSelector motorParams = new StarterSelector();
+				String modelOutput = motorParams.selectStarter(x, Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
+				SDLabel.setText(modelOutput);
+			}
+			else {
+				SDLabel.setText("Drivers are not supported yet");
+			}
+			
+			/* Julio's code
 			Double info[] = new Double[3];
 			info[0] = Double.parseDouble(motorVoltInput.getText());
 			info[1] = Double.parseDouble(hpInput.getText());
@@ -57,6 +72,7 @@ public class DriveStarterSelector extends JFrame{
 			} else {
 				SDLabel.setText("nothing :(");
 			}
+			*/
 		
 		}
 	}
