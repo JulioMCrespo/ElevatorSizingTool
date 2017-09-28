@@ -1,5 +1,5 @@
 
-public class Siemens {
+public class Siemens extends StarterSelector{
 
 	final  String[] MODEL = {
 			"72EG34AFP",//0
@@ -23,7 +23,7 @@ public class Siemens {
 			"72PG35AFP" //18
 	};
 	
-	public String ChooseStarter(double motorVolts, double fla, double hp){
+	public String ChooseStarter(double motorVolts, double fla, double hp, String wires){
 		String output = "nothing came out";
 		//String test[] = {Double.toString(motorVolts),Double.toString(fla),Double.toString(hp)};
 		//String output = String.format("%s,%s,%s",test[0],test[1],test[2]);

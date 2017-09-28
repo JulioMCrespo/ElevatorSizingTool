@@ -15,7 +15,9 @@ public class DriveStarterSelector extends JFrame{
 	private JButton SDButton; //drive and starter button
 	private JLabel SDLabel; //tells you the starter or drive that you need
 	private JComboBox movers;
-	String moverBrands[] = {"Siemens","S&S","Magnetek HPV900","Serial KEB"};
+	private JComboBox leads;
+	private String moverBrands[] = {"Siemens","S&S","Magnetek HPV900","Serial KEB"};
+	private String wireLeads[] = {"2","3 or 9", "6 or 12"};
 	
 	public DriveStarterSelector(){
 		setLayout(new FlowLayout());
@@ -28,6 +30,7 @@ public class DriveStarterSelector extends JFrame{
 		SDButton = new JButton("FIND");
 		SDLabel = new JLabel("Answer");
 		movers = new JComboBox(moverBrands);
+		leads = new JComboBox(wireLeads);
 		
 		add(motorVoltLabel);
 		add(motorVoltInput);
@@ -36,6 +39,7 @@ public class DriveStarterSelector extends JFrame{
 		add(flaLabel);
 		add(flaInput);
 		add(movers);
+		add(leads);
 		add(SDButton);
 		add(SDLabel);
 		SDButton.addActionListener(new finder());
@@ -48,13 +52,21 @@ public class DriveStarterSelector extends JFrame{
 //			System.out.println(motorVoltInput.getText());
 //			System.out.println(Double.parseDouble(motorVoltInput.getText()));
 			//StarterSelector motorParams = new StarterSelector((String) movers.getSelectedItem(), Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
+			
 			String x = (String) movers.getSelectedItem();
-			if (x == "Siemens" || x == "S&S") {
-				StarterSelector motorParams = new StarterSelector();
-				String modelOutput = motorParams.selectStarter(x, Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
+			String wires = (String) leads.getSelectedItem();
+			if (x == "Siemens") {
+				StarterSelector aSiemens = new Siemens();
+				//String modelOutput = motorParams.selectStarter(x, Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
+				String modelOutput = aSiemens.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
+
 				SDLabel.setText(modelOutput);
 			}
-			else {
+			else if(x == "S&S"){
+				StarterSelector aSnS = new sprecherSchuh();
+				String modelOutput = aSnS.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
+				SDLabel.setText(modelOutput);
+			} else{
 				SDLabel.setText("Drivers are not supported yet");
 			}
 			

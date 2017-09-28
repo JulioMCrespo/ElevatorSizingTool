@@ -1,12 +1,15 @@
 
-public class StarterSelector extends Siemens{
-	
-	/* Julio's Code
-	public String ChooseStarter(double motorVolts, double fla, double hp){
+//public class StarterSelector extends Siemens{
+public class StarterSelector{
+
+	//* Julio's Code
+
+	public String ChooseStarter(double motorVolts, double fla, double hp, String wires){
 		return "nothing";
 	}
-	*/
 	
+	//*/
+	/*
 	public String selectStarter(String starterType, double motorVolts, double fla, double hp) {
 //		System.out.println("drive: " + driveType + " mv: " + motorVolts + " fla: "+ fla + " hp: " +  hp);
 		String modelBrand;
@@ -25,5 +28,6 @@ public class StarterSelector extends Siemens{
 		return modelBrand;
 		
 	}
-	
+	*/
 }
+
