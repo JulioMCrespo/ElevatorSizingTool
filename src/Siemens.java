@@ -2,25 +2,25 @@
 public class Siemens extends StarterSelector{
 
 	final  String[] MODEL = {
-			"72EG34AFP",//1
-			"72GG34AFP",//2
-			"72HG34AFP",//3
-			"72JG34AFP",//4
-			"72KG34AFP",//5
-			"72LG34AFP",//6
-			"72MG34AFP",//7
-			"72NG34AFP",//8
-			"72PG34AFP",//9
-			"72RG34AFP",//10
-			"72EG35AFP",//11
-			"72GG35AFP",//12
-			"72HG35AFP",//13
-			"72JG35AFP",//14
-			"72KG35AFP",//15
-			"72LG35AFP",//16
-			"72MG35AFP",//17
-			"72NG35AFP",//18
-			"72PG35AFP" //19
+			"72EG34AFP",//0
+			"72GG34AFP",//1
+			"72HG34AFP",//2
+			"72JG34AFP",//3
+			"72KG34AFP",//4
+			"72LG34AFP",//5
+			"72MG34AFP",//6
+			"72NG34AFP",//7
+			"72PG34AFP",//8
+			"72RG34AFP",//9
+			"72EG35AFP",//10
+			"72GG35AFP",//11
+			"72HG35AFP",//12
+			"72JG35AFP",//13
+			"72KG35AFP",//14
+			"72LG35AFP",//15
+			"72MG35AFP",//16
+			"72NG35AFP",//17
+			"72PG35AFP" //18
 	};
 	
 	public String ChooseStarter(double motorVolts, double fla, double hp){
