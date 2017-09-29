@@ -23,7 +23,7 @@ public class Siemens extends StarterSelector{
 			"72PG35AFP" //18
 	};
 	
-	public String ChooseStarter(double motorVolts, double fla, double hp, String wires){
+	public String ChooseStarter(double motorVolts, double hp, double fla, String wires){
 		String output = "nothing came out";
 		//String test[] = {Double.toString(motorVolts),Double.toString(fla),Double.toString(hp)};
 		//String output = String.format("%s,%s,%s",test[0],test[1],test[2]);
