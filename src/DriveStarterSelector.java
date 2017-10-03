@@ -18,6 +18,9 @@ public class DriveStarterSelector extends JFrame{
 	private JComboBox leads;
 	private String moverBrands[] = {"Siemens","S&S","Magnetek HPV900","Serial KEB"};
 	private String wireLeads[] = {"2","3 or 9", "6 or 12"};
+	private JLabel driveGauge;
+	private JLabel motorGauge;
+	private JLabel discSize;
 	
 	public DriveStarterSelector(){
 		setLayout(new FlowLayout());
@@ -28,9 +31,13 @@ public class DriveStarterSelector extends JFrame{
 		flaLabel = new JLabel("Enter FLA:");
 		flaInput = new JTextField(5);
 		SDButton = new JButton("FIND");
-		SDLabel = new JLabel("Answer");
+		SDLabel = new JLabel("Drive/Starter: ");
 		movers = new JComboBox(moverBrands);
 		leads = new JComboBox(wireLeads);
+		//wire gauges and disconnects
+		driveGauge = new JLabel("Drive gauge is: ");
+		motorGauge = new JLabel("Motor gauge is: ");
+		discSize = new JLabel("Disconnect size is: ");
 		
 		add(motorVoltLabel);
 		add(motorVoltInput);
@@ -42,6 +49,9 @@ public class DriveStarterSelector extends JFrame{
 		add(leads);
 		add(SDButton);
 		add(SDLabel);
+		add(driveGauge);
+		add(motorGauge);
+		add(discSize);
 		SDButton.addActionListener(new finder());
 	}
 	
@@ -55,19 +65,33 @@ public class DriveStarterSelector extends JFrame{
 			
 			String x = (String) movers.getSelectedItem();
 			String wires = (String) leads.getSelectedItem();
+			HydroWiresDisc wireNdisc = new HydroWiresDisc();
+			
+			//String theGauges[] = wireNdisc.getGauge();
 			if (x == "Siemens") {
 				StarterSelector aSiemens = new Siemens();
 				//String modelOutput = motorParams.selectStarter(x, Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
 				String modelOutput = aSiemens.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
-
+				wireNdisc.setGauge(Double.parseDouble(flaInput.getText()));
+				driveGauge.setText(wireNdisc.getDriveGauge());
+				motorGauge.setText(wireNdisc.getMotorGauge());
+				discSize.setText(Integer.toString(wireNdisc.getDisconnect()));
 				SDLabel.setText(modelOutput);
 			}
 			else if(x == "S&S"){
 				StarterSelector aSnS = new sprecherSchuh();
 				String modelOutput = aSnS.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
+				driveGauge.setText(wireNdisc.getDriveGauge());
+				motorGauge.setText(wireNdisc.getMotorGauge());
+				discSize.setText(Integer.toString(wireNdisc.getDisconnect()));
+				SDLabel.setText("Sprecher and Schuh:" + modelOutput);
+			} else if(x == "Magnetek HPV900"){
+				DriveSelector aMag = new Magnetek();
+				String modelOutput = aMag.ChooseDrive(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
 				SDLabel.setText(modelOutput);
-			} else{
-				SDLabel.setText("Drivers are not supported yet");
+				
+			}else{
+				SDLabel.setText("KEB and DC are not supported yet");
 			}
 			
 			/* Julio's code
