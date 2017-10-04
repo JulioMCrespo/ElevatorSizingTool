@@ -38,6 +38,7 @@ public class Siemens extends StarterSelector{
 			
 		}
 		*/
+	if(wires == "3" || wires == "6" || wires == "9" || wires == "12"){
 		if(motorVolts <= 208){
 			if(hp<=5 && fla<=22){
 				output = MODEL[0];
@@ -125,7 +126,9 @@ public class Siemens extends StarterSelector{
 				output = MODEL[18];
 			}
 		}
-		
+	} else {
+		return "Siemens Does not support this wire count";
+	}
 		
 		return "Siemens: " + output;
 	}

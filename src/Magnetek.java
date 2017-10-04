@@ -7,7 +7,7 @@ public class Magnetek extends DriveSelector{
 			"HPV900-2052-2E1-01",//3
 			"HPV900-2075-2E1-01",//4
 			"HPV900-2088-2E1-01",//5
-			"HPV900-2089-2E1-01",//6
+			"HPV900-2098-2E1-01",//6
 			"HPV900-4008-2E1-01",//7
 			"HPV900-4012-2E1-01",//8
 			"HPV900-4016-2E1-01",//9
@@ -48,11 +48,11 @@ public class Magnetek extends DriveSelector{
 		int row = 0;
 		int horses = 0;
 		int currents = 1;
-		if(wires == "3 or 9"){
+		if(wires == "3"){
 			if(motorVolt <= 250){
 				for(row = 0; row <= twoThirty.length; row++){
 					if(hp <= twoThirty[row][horses] && fla <= twoThirty[row][currents]){
-						return MODEL[row-1];
+						return MODEL[row];
 					}
 				}
 			} else if (motorVolt <= 500){

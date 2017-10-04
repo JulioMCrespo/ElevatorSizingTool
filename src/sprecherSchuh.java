@@ -30,7 +30,7 @@ public class sprecherSchuh extends StarterSelector{
 		int row = 0;
 		int flaloc = 4;//this is the location column for the fla
 		try{
-		if(wires == "6 or 12"){
+		if(wires == "6" || wires == "12"){
 			//looks for the row of the model that is required
 			for(column = 0; column<sixTbl[row].length; column++){//loops though only the first row
 				if(motorVolts<=sixTbl[row][column]){//checks voltage
@@ -44,7 +44,7 @@ public class sprecherSchuh extends StarterSelector{
 				}
 			}
 			return "no result for 6 or 12 wires";
-		} else if(wires == "3 or 9"){
+		} else if(wires == "3" || wires == "9"){
 			//looks for the row of the model that is required
 			for(column = 0; column<threeTbl[row].length; column++){//loops though only the first row
 				if(motorVolts<=threeTbl[row][column]){//checks voltage

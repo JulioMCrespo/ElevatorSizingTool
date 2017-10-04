@@ -17,7 +17,8 @@ public class DriveStarterSelector extends JFrame{
 	private JComboBox movers;
 	private JComboBox leads;
 	private String moverBrands[] = {"Siemens","S&S","Magnetek HPV900","Serial KEB"};
-	private String wireLeads[] = {"2","3 or 9", "6 or 12"};
+	//private String wireLeads[] = {"2","3 or 9", "6 or 12"};
+	private String wireLeads[] = {"3", "6", "9", "12"};
 	private JLabel driveGauge;
 	private JLabel motorGauge;
 	private JLabel discSize;
@@ -61,33 +62,40 @@ public class DriveStarterSelector extends JFrame{
 			//Cindy's TEST AREA //WORKING!!!
 //			System.out.println(motorVoltInput.getText());
 //			System.out.println(Double.parseDouble(motorVoltInput.getText()));
-			//StarterSelector motorParams = new StarterSelector((String) movers.getSelectedItem(), Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
 			
 			String x = (String) movers.getSelectedItem();
 			String wires = (String) leads.getSelectedItem();
 			HydroWiresDisc wireNdisc = new HydroWiresDisc();
-			
 			//String theGauges[] = wireNdisc.getGauge();
 			if (x == "Siemens") {
 				StarterSelector aSiemens = new Siemens();
-				//String modelOutput = motorParams.selectStarter(x, Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()));
-				String modelOutput = aSiemens.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
+				String modelOutput = aSiemens.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), 
+															Double.parseDouble(hpInput.getText()), 
+															Double.parseDouble(flaInput.getText()), 
+															wires);
 				wireNdisc.setGauge(Double.parseDouble(flaInput.getText()));
 				driveGauge.setText(wireNdisc.getDriveGauge());
 				motorGauge.setText(wireNdisc.getMotorGauge());
-				discSize.setText(Integer.toString(wireNdisc.getDisconnect()));
+				discSize.setText(wireNdisc.getDisconnect());
 				SDLabel.setText(modelOutput);
 			}
 			else if(x == "S&S"){
 				StarterSelector aSnS = new sprecherSchuh();
-				String modelOutput = aSnS.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
+				String modelOutput = aSnS.ChooseStarter(Double.parseDouble(motorVoltInput.getText()), 
+														Double.parseDouble(hpInput.getText()), 
+														Double.parseDouble(flaInput.getText()), 
+														wires);
+				wireNdisc.setGauge(Double.parseDouble(flaInput.getText()));
 				driveGauge.setText(wireNdisc.getDriveGauge());
 				motorGauge.setText(wireNdisc.getMotorGauge());
-				discSize.setText(Integer.toString(wireNdisc.getDisconnect()));
+				discSize.setText(wireNdisc.getDisconnect());
 				SDLabel.setText("Sprecher and Schuh:" + modelOutput);
 			} else if(x == "Magnetek HPV900"){
 				DriveSelector aMag = new Magnetek();
-				String modelOutput = aMag.ChooseDrive(Double.parseDouble(motorVoltInput.getText()), Double.parseDouble(hpInput.getText()), Double.parseDouble(flaInput.getText()), wires);
+				String modelOutput = aMag.ChooseDrive(	Double.parseDouble(motorVoltInput.getText()), 
+														Double.parseDouble(hpInput.getText()), 
+														Double.parseDouble(flaInput.getText()), 
+														wires);
 				SDLabel.setText(modelOutput);
 				
 			}else{
